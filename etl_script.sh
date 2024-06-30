@@ -14,3 +14,10 @@ echo "Transforming data"
 
 tr "#" "," < extracted_data.txt>transformed_data.csv
 
+# Load phase
+echo "Loading data"
+
+# Send the instructions to connect to database(etldb) and
+#copy the file to the table 'access_log' through command pipeline.
+
+echo "\c load;\COPY access_log  FROM '/Users/nishagi/myStuff/shellScriptPipeline/transformed-data.csv' DELIMITERS ',' CSV HEADER;" | psql --username=postgres --host=localhost
